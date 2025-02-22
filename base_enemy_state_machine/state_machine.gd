@@ -19,6 +19,7 @@ func change_state(new_state: BaseEnemyState) -> void:
 
 	current_state = new_state
 	current_state.enter()
+	print(current_state)
 	
 # Pass through functions for the Player to call,
 # handling state changes as needed.

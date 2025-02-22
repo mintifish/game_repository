@@ -528,7 +528,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ryxk6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -550,16 +550,12 @@ starting_state = NodePath("idle")
 script = ExtResource("4_fc3qe")
 run_state = NodePath("../run")
 current_animation = "front_idle"
-speed = null
-acceleration = null
 
 [node name="run" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "walk_state")]
 script = ExtResource("7_nciuy")
 idle_state = NodePath("../idle")
 walk_state = NodePath("../walk")
 current_animation = "front_run"
-speed = null
-acceleration = null
 
 [node name="walk" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "run_state")]
 script = ExtResource("8_lpt6j")
@@ -567,4 +563,3 @@ idle_state = NodePath("../idle")
 run_state = NodePath("../run")
 current_animation = "front_walk"
 speed = 150.0
-acceleration = null

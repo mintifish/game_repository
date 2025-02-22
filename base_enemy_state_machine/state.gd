@@ -6,6 +6,8 @@ extends Node
 @export var speed: float = 250
 @export var acceleration: float = 500
 
+var return_state = ""
+
 var parent: BaseEnemy
 
 func enter() -> void:

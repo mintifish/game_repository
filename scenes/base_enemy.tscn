@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://b0dtuihybjlcv"]
+[gd_scene load_steps=81 format=3 uid="uid://b0dtuihybjlcv"]
 
 [ext_resource type="Texture2D" uid="uid://c8o4euks4ie8w" path="res://art/player/Basic/idle.png" id="1_qmkga"]
 [ext_resource type="Script" path="res://scripts/base_enemy.gd" id="1_xg6lj"]
@@ -8,9 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://fbuophhiupub" path="res://base_enemy_state_machine/state_machine.tscn" id="6_6iibe"]
 [ext_resource type="Script" path="res://base_enemy_state_machine/state_machine.gd" id="7_ecft6"]
 [ext_resource type="Script" path="res://scripts/base_enemy_states/idle.gd" id="8_pkqig"]
+[ext_resource type="Script" path="res://scripts/base_enemy_states/wander.gd" id="9_5n1mo"]
+[ext_resource type="Script" path="res://scripts/base_enemy_states/chase.gd" id="10_1kdg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f80"]
-size = Vector2(11, 14)
+size = Vector2(11, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i5d6h"]
+radius = 52.0096
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x1p1"]
+size = Vector2(13, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c3r8j"]
 atlas = ExtResource("1_qmkga")
@@ -531,9 +539,22 @@ animations = [{
 script = ExtResource("1_xg6lj")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_f7f80")
 debug_color = Color(0.999644, 0, 0.106203, 0.42)
+
+[node name="View_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View_area"]
+shape = SubResource("CircleShape2D_i5d6h")
+debug_color = Color(1, 0, 0.105882, 0.0901961)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_8x1p1")
+debug_color = Color(1, 0, 0.105882, 0.172549)
 
 [node name="animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l17t8")
@@ -541,7 +562,34 @@ animation = &"front_idle"
 
 [node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("6_6iibe")]
 script = ExtResource("7_ecft6")
-starting_state = NodePath("Idle")
+starting_state = NodePath("wander")
 
-[node name="Idle" type="Node" parent="state_machine"]
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("wander_state", "chase_state")]
 script = ExtResource("8_pkqig")
+wander_state = NodePath("../wander")
+chase_state = NodePath("../chase")
+current_animation = "front_idle"
+
+[node name="Timer" type="Timer" parent="state_machine/idle"]
+
+[node name="wander" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "chase_state")]
+script = ExtResource("9_5n1mo")
+idle_state = NodePath("../idle")
+chase_state = NodePath("../chase")
+current_animation = "front_run"
+speed = 50.0
+
+[node name="Timer" type="Timer" parent="state_machine/wander"]
+wait_time = 1.5
+
+[node name="chase" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("10_1kdg3")
+idle_state = NodePath("../idle")
+current_animation = "front_run"
+speed = 100.0
+
+[connection signal="body_entered" from="View_area" to="state_machine/idle" method="_on_view_area_body_entered"]
+[connection signal="body_entered" from="View_area" to="state_machine/wander" method="_on_view_area_body_entered"]
+[connection signal="body_exited" from="View_area" to="state_machine/chase" method="_on_view_area_body_exited"]
+[connection signal="timeout" from="state_machine/idle/Timer" to="state_machine/idle" method="_on_timer_timeout"]
+[connection signal="timeout" from="state_machine/wander/Timer" to="state_machine/wander" method="_on_timer_timeout"]

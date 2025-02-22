@@ -5,21 +5,22 @@ extends PlayerState
 
 
 func process_input(event: InputEvent) -> PlayerState:
-	Global.last_direction = Global.direction
-	Global.direction = Vector2.ZERO
-	Global.direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	Global.player_last_direction = Global.player_direction
+	Global.player_direction = Vector2.ZERO
+	Global.player_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return null
 
 func process_physics(delta: float) -> PlayerState: #Player animations
-	if Global.direction.x < 0 or Global.direction.x > 0:
-		parent.animations.flip_h = Global.direction.x < 0
+	if Global.player_direction.x < 0 or Global.player_direction.x > 0:
+		parent.animations.flip_h = Global.player_direction.x < 0
 		parent.animations.play("side_walk")
-	elif Global.direction.y < 0:
+	elif Global.player_direction.y < 0:
 		parent.animations.play("back_walk")
-	elif Global.direction.y > 0:
+	elif Global.player_direction.y > 0:
 		parent.animations.play("front_walk")
 	
-	parent.velocity = Global.direction.normalized() * speed
+	parent.velocity = Global.player_direction.normalized() * speed
+	Global.player_position = parent.position
 	
 	if parent.velocity == Vector2.ZERO: #Standing Still
 		return idle_state
