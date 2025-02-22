@@ -1,11 +1,11 @@
 extends Node
 
-@export var starting_state: State
-var current_state: State
+@export var starting_state: BaseEnemyState
+var current_state: BaseEnemyState
 
 # Initialize the state machine by giving each child state a reference to the
 # parent object it belongs to and enter the default starting_state.
-func init(parent: Player) -> void:
+func init(parent: BaseEnemy) -> void:
 	for child in get_children():
 		child.parent = parent
 
@@ -13,13 +13,12 @@ func init(parent: Player) -> void:
 	change_state(starting_state)
 
 # Change to the new state by first calling any exit logic on the current state.
-func change_state(new_state: State) -> void:
+func change_state(new_state: BaseEnemyState) -> void:
 	if current_state:
 		current_state.exit()
 
 	current_state = new_state
 	current_state.enter()
-	print(current_state)
 	
 # Pass through functions for the Player to call,
 # handling state changes as needed.

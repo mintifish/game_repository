@@ -1,18 +1,19 @@
-extends State
+extends PlayerState
 
-@export var run_state: State
+@export var run_state: PlayerState
 
 
 func enter() -> void:
 	super()
 	parent.velocity = Vector2.ZERO
+	parent.animations.play("front_idle")
 
-func process_input(event: InputEvent) -> State:
+func process_input(event: InputEvent) -> PlayerState:
 	Global.direction = Vector2.ZERO
 	Global.direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return null
 
-func process_physics(delta: float) -> State: #Player animations
+func process_physics(delta: float) -> PlayerState: #Player animations
 	if Global.last_direction.x < 0 or Global.last_direction.x > 0:
 		parent.animations.play("side_idle")
 	elif Global.last_direction.y < 0:

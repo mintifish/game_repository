@@ -1,4 +1,4 @@
-class_name State
+class_name BaseEnemyState
 extends Node
 
 @export var current_animation: String
@@ -6,7 +6,7 @@ extends Node
 @export var speed: float = 250
 @export var acceleration: float = 500
 
-var parent: Player
+var parent: BaseEnemy
 
 func enter() -> void:
 	pass
@@ -14,11 +14,11 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-func process_input(event: InputEvent) -> State:
+func process_input(event: InputEvent) -> BaseEnemyState:
 	return null
 
-func process_frame(delta: float) -> State:
+func process_frame(delta: float) -> BaseEnemyState:
 	return null
 
-func process_physics(delta: float) -> State:
+func process_physics(delta: float) -> BaseEnemyState:
 	return null

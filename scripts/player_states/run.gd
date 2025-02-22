@@ -1,16 +1,16 @@
-extends State
+extends PlayerState
 
-@export var idle_state: State
-@export var walk_state: State
+@export var idle_state: PlayerState
+@export var walk_state: PlayerState
 
 
-func process_input(event: InputEvent) -> State:
+func process_input(event: InputEvent) -> PlayerState:
 	Global.last_direction = Global.direction
 	Global.direction = Vector2.ZERO
 	Global.direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return null
 
-func process_physics(delta: float) -> State: #Player animations
+func process_physics(delta: float) -> PlayerState: #Player animations
 	if Global.direction.x < 0 or Global.direction.x > 0:
 		parent.animations.flip_h = Global.direction.x < 0
 		parent.animations.play("side_run")
