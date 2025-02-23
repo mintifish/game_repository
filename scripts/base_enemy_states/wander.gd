@@ -20,7 +20,9 @@ func process_physics(delta: float) -> BaseEnemyState:
 		"chase_state":
 			return chase_state
 
-	parent.velocity = direction * speed
+	parent.velocity = Vector2(
+		move_toward(parent.velocity.x, direction.x * speed, acceleration * delta),
+		move_toward(parent.velocity.y, direction.y * speed, acceleration * delta))
 		
 	parent.move_and_slide()
 	return null

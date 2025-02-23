@@ -15,7 +15,7 @@
 size = Vector2(8, 5.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5d6h"]
-radius = 44.0
+radius = 504.321
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x1p1"]
 size = Vector2(10, 10)
@@ -267,6 +267,7 @@ speed = 100.0
 script = ExtResource("9_2napc")
 chase_state = NodePath("../chase")
 current_animation = "front_attack"
+speed = 50.0
 
 [connection signal="body_entered" from="View_area" to="state_machine/idle" method="_on_view_area_body_entered"]
 [connection signal="body_entered" from="View_area" to="state_machine/wander" method="_on_view_area_body_entered"]

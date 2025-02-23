@@ -6,7 +6,6 @@ extends PlayerState
 func enter() -> void:
 	super()
 	parent.velocity = Vector2.ZERO
-	parent.animations.play("front_idle")
 
 func process_input(event: InputEvent) -> PlayerState:
 	parent.player_direction = Vector2.ZERO
@@ -21,11 +20,10 @@ func process_physics(delta: float) -> PlayerState: #Player animations
 	elif parent.player_last_direction.y > 0:
 		parent.animations.play("front_idle")
 	
-	parent.velocity = parent.player_direction.normalized() * speed #Velocity update
-	Global.player_position = parent.position
-	
-	if parent.velocity != Vector2.ZERO or parent.player_direction != Vector2.ZERO: #Plyer is moving and direction not 0
+	if parent.player_direction != Vector2.ZERO: #Plyer is moving and direction not 0
 		return run_state
+		
+	Global.player_position = parent.position
 	
 	parent.move_and_slide()
 	return null

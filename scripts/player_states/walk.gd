@@ -19,7 +19,10 @@ func process_physics(delta: float) -> PlayerState: #Player animations
 	elif parent.player_direction.y > 0:
 		parent.animations.play("front_walk")
 	
-	parent.velocity = parent.player_direction.normalized() * speed
+	parent.velocity = Vector2(
+ 	   move_toward(parent.velocity.x, parent.player_direction.x * speed, acceleration * delta),
+ 	   move_toward(parent.velocity.y, parent.player_direction.y * speed, acceleration * delta)
+	)
 	Global.player_position = parent.position
 	
 	if parent.velocity == Vector2.ZERO: #Standing Still

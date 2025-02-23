@@ -7,7 +7,6 @@ var has_dealt_damage: bool = false
 
 func enter():
 	parent.animations.play(current_animation)
-	parent.velocity = Vector2.ZERO	
 	return_state = ""
 	has_dealt_damage = false  # Reset the flag on enter
 
@@ -22,8 +21,7 @@ func process_physics(delta: float) -> BaseEnemyState:
 
 	if parent.animations.get_frame() != 7:
 		has_dealt_damage = false
-
-	parent.move_and_slide()
+		
 	return null
 
 func _on_hitbox_area_exited(area: Area2D) -> void:

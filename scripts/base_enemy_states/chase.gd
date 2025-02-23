@@ -14,8 +14,12 @@ func process_physics(delta: float) -> BaseEnemyState:
 		"idle_state":
 			return idle_state
 
-	if move_to_player: 
-		parent.velocity = Global.player_position - parent.position
+	if move_to_player:
+		var direction = (Global.player_position - parent.position).normalized()
+		parent.velocity = Vector2(
+			move_toward(parent.velocity.x, direction.x * speed, acceleration * delta),
+			move_toward(parent.velocity.y, direction.y * speed, acceleration * delta)
+		)
 	else:
 		return attack_state
 
