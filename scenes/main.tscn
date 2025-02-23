@@ -8,11 +8,11 @@ size = Vector2(20, 96)
 
 [node name="main" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource("1_f0o3s")]
-position = Vector2(240, 135)
-
 [node name="base_enemy" parent="." instance=ExtResource("2_ndrow")]
 position = Vector2(332, 199)
+
+[node name="player" parent="." instance=ExtResource("1_f0o3s")]
+position = Vector2(240, 135)
 
 [node name="Area2D" type="Area2D" parent="."]
 

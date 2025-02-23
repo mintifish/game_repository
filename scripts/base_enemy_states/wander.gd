@@ -2,16 +2,15 @@ extends BaseEnemyState
 
 @export var idle_state: BaseEnemyState
 @export var chase_state: BaseEnemyState
-@onready var wander_timer = $Timer
+@onready var timer = $Timer
 var direction =  Vector2.ZERO
 
 
 func enter() -> void:
 	super()
 	parent.animations.play(current_animation)
-	
 	direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
-	wander_timer.start()
+	timer.start()
 	return_state = ""
 
 func process_physics(delta: float) -> BaseEnemyState:
@@ -22,7 +21,7 @@ func process_physics(delta: float) -> BaseEnemyState:
 			return chase_state
 
 	parent.velocity = direction * speed
-	
+		
 	parent.move_and_slide()
 	return null
 
