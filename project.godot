@@ -25,6 +25,16 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://art/": "red",
+"res://base_enemy_state_machine/": "orange",
+"res://player_state_machine/": "yellow",
+"res://scenes/": "green",
+"res://scripts/": "teal"
+}
+
 [global_group]
 
 Player=""
