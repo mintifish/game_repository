@@ -8,6 +8,7 @@ var player_direction: Vector2
 var player_last_direction: Vector2
 
 func _ready() -> void:
+	animations.play("front_idle")
 	state_machine.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -15,7 +16,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
-	print(Global.player_current_hp)
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)

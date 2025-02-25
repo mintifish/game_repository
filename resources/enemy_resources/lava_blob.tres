@@ -189,4 +189,6 @@ script = ExtResource("1_2bb3c")
 speed = 50.0
 attack_damage = 80.0
 acceleration = 1000.0
+max_hp = 100.0
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_erwco")

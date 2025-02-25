@@ -203,5 +203,6 @@ script = ExtResource("1_c2keu")
 speed = 70.0
 attack_damage = 50.0
 acceleration = 1000.0
+max_hp = 100.0
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_u7av5")

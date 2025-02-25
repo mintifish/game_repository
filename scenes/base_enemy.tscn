@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0dtuihybjlcv"]
+[gd_scene load_steps=16 format=3 uid="uid://b0dtuihybjlcv"]
 
 [ext_resource type="Script" path="res://scripts/base_enemy.gd" id="1_xg6lj"]
 [ext_resource type="Resource" uid="uid://c3yf7161nijxp" path="res://resources/enemy_resources/green_blob.tres" id="2_8qrsh"]
+[ext_resource type="Texture2D" uid="uid://bdbod53mr8pt5" path="res://art/GUI/health_bar/progress bar medium rounded progress tintable grey.png" id="3_mau21"]
+[ext_resource type="Texture2D" uid="uid://2omb0bcn8tf7" path="res://art/GUI/health_bar/progress bar medium rounded over.png" id="4_clkra"]
+[ext_resource type="Texture2D" uid="uid://b5aanuxqf112c" path="res://art/GUI/health_bar/progress bar medium rounded progress green.png" id="5_ohtk7"]
 [ext_resource type="PackedScene" uid="uid://fbuophhiupub" path="res://base_enemy_state_machine/state_machine.tscn" id="6_6iibe"]
 [ext_resource type="Script" path="res://base_enemy_state_machine/state_machine.gd" id="7_ecft6"]
 [ext_resource type="Script" path="res://scripts/base_enemy_states/idle.gd" id="8_pkqig"]
@@ -22,6 +25,7 @@ size = Vector2(10, 10)
 animations = []
 
 [node name="base_enemy" type="CharacterBody2D"]
+position = Vector2(0, -4)
 script = ExtResource("1_xg6lj")
 stats = ExtResource("2_8qrsh")
 
@@ -48,9 +52,21 @@ scale = Vector2(0.617219, 0.663743)
 sprite_frames = SubResource("SpriteFrames_rjqsw")
 animation = &""
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -9.0
+offset_top = 6.0
+offset_right = 31.0
+offset_bottom = 46.0
+scale = Vector2(0.56552, 0.56552)
+value = 10.0
+texture_under = ExtResource("3_mau21")
+texture_over = ExtResource("4_clkra")
+texture_progress = ExtResource("5_ohtk7")
+
 [node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("6_6iibe")]
 script = ExtResource("7_ecft6")
-starting_state = NodePath("wander")
+starting_state = NodePath("idle")
 
 [node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("wander_state", "chase_state")]
 script = ExtResource("8_pkqig")
