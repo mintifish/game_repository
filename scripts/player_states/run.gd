@@ -28,6 +28,8 @@ func process_physics(delta: float) -> PlayerState:
  	   move_toward(parent.velocity.x, parent.player_direction.x * speed, acceleration * delta),
  	   move_toward(parent.velocity.y, parent.player_direction.y * speed, acceleration * delta)
 	)
+	print("Direction:", parent.player_direction, " Velocity:", parent.velocity)
+
 
 	if parent.velocity == Vector2.ZERO: #Standing Still
 		return idle_state

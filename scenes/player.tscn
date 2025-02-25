@@ -732,4 +732,6 @@ idle_state = NodePath("../idle")
 run_state = NodePath("../run")
 current_animation = "front_idle"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="animation_finished" from="animations" to="state_machine/attack" method="_on_animations_animation_finished"]
