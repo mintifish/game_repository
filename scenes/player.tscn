@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://di4b3fet5cvsw"]
+[gd_scene load_steps=99 format=3 uid="uid://di4b3fet5cvsw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ryxk6"]
 [ext_resource type="Texture2D" uid="uid://c8o4euks4ie8w" path="res://art/player/Basic/idle.png" id="2_jxvw5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://btxjmnkb7l2ed" path="res://art/player/Basic/death.png" id="5_ht67h"]
 [ext_resource type="Script" path="res://scripts/player_states/run.gd" id="7_nciuy"]
 [ext_resource type="Script" path="res://scripts/player_states/walk.gd" id="8_lpt6j"]
+[ext_resource type="Script" path="res://scripts/player_states/attack.gd" id="11_lqfur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f80"]
 size = Vector2(11, 4)
@@ -356,25 +357,25 @@ region = Rect2(560, 0, 80, 80)
 [sub_resource type="SpriteFrames" id="SpriteFrames_l17t8"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_cysrf")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_pa4in")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_qpchm")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_5ywj5")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_5ewgr")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_lqsbs")
 }],
-"loop": true,
+"loop": false,
 "name": &"back_attack_sword_1",
 "speed": 5.0
 }, {
@@ -454,25 +455,25 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_awi50")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_k1ivd")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_46efb")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_o068j")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_7njuq")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_xi3kk")
 }],
-"loop": true,
+"loop": false,
 "name": &"front_attack_sword_1",
 "speed": 5.0
 }, {
@@ -575,25 +576,25 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_5l2te")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_acajm")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_bkk4x")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_pdxcx")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_mheix")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_apgdi")
 }],
-"loop": true,
+"loop": false,
 "name": &"side_attack_sword_1",
 "speed": 5.0
 }, {
@@ -687,9 +688,16 @@ shape = SubResource("RectangleShape2D_f7f80")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_w2yi0")
 
+[node name="ToolHitbox" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ToolHitbox"]
+rotation = -4.71239
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 18, -8, 18, 9)
+
 [node name="animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l17t8")
-animation = &"back_attack_sword_1"
+animation = &"side_attack_sword_1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
@@ -697,20 +705,31 @@ zoom = Vector2(5, 5)
 [node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_hcrjv")]
 starting_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("run_state")]
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("run_state", "attack_state")]
 script = ExtResource("4_fc3qe")
 run_state = NodePath("../run")
+attack_state = NodePath("../attack")
 current_animation = "front_idle"
 
-[node name="run" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "walk_state")]
+[node name="run" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "walk_state", "attack_state")]
 script = ExtResource("7_nciuy")
 idle_state = NodePath("../idle")
 walk_state = NodePath("../walk")
+attack_state = NodePath("../attack")
 current_animation = "front_run"
 
-[node name="walk" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "run_state")]
+[node name="walk" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "run_state", "attack_state")]
 script = ExtResource("8_lpt6j")
 idle_state = NodePath("../idle")
 run_state = NodePath("../run")
+attack_state = NodePath("../attack")
 current_animation = "front_walk"
 speed = 150.0
+
+[node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "run_state")]
+script = ExtResource("11_lqfur")
+idle_state = NodePath("../idle")
+run_state = NodePath("../run")
+current_animation = "front_idle"
+
+[connection signal="animation_finished" from="animations" to="state_machine/attack" method="_on_animations_animation_finished"]

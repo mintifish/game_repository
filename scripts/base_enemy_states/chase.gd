@@ -25,16 +25,3 @@ func process_physics(delta: float) -> BaseEnemyState:
 
 	parent.move_and_slide()
 	return null
-
-
-func _on_view_area_body_exited(body: Node2D): #Player exited view zone
-	if body.is_in_group("Player"):
-		return_state = "idle_state"
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Player"):
-		move_to_player = false
-
-func _on_hitbox_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Player"):
-		move_to_player = true

@@ -2,11 +2,17 @@ extends PlayerState
 
 @export var idle_state: PlayerState
 @export var run_state: PlayerState
+@export var attack_state: PlayerState
 
 
 func process_input(event: InputEvent) -> PlayerState:
-	parent.player_last_direction = parent.player_direction
-	parent.player_direction = Vector2.ZERO
+	if Input.is_action_just_pressed("left_click"):
+		return attack_state
+	if Input.is_action_just_released("walk"): #Not pressing walk
+		return run_state
+	
+	if parent.player_direction != Vector2.ZERO:
+		parent.player_last_direction = parent.player_direction
 	parent.player_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return null
 
@@ -23,13 +29,9 @@ func process_physics(delta: float) -> PlayerState: #Player animations
  	   move_toward(parent.velocity.x, parent.player_direction.x * speed, acceleration * delta),
  	   move_toward(parent.velocity.y, parent.player_direction.y * speed, acceleration * delta)
 	)
-	Global.player_position = parent.position
 	
 	if parent.velocity == Vector2.ZERO: #Standing Still
 		return idle_state
-		
-	if Input.is_action_just_released("walk"): #Not pressing walk
-		return run_state
 	
 	parent.move_and_slide()
 	return null

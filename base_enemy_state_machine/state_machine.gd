@@ -3,25 +3,19 @@ extends Node
 @export var starting_state: BaseEnemyState
 var current_state: BaseEnemyState
 
-# Initialize the state machine by giving each child state a reference to the
-# parent object it belongs to and enter the default starting_state.
 func init(parent: BaseEnemy) -> void:
 	for child in get_children():
 		child.parent = parent
-
-	# Initialize to the default state
 	change_state(starting_state)
 
-# Change to the new state by first calling any exit logic on the current state.
 func change_state(new_state: BaseEnemyState) -> void:
 	if current_state:
 		current_state.exit()
 
 	current_state = new_state
 	current_state.enter()
-	
-# Pass through functions for the Player to call,
-# handling state changes as needed.
+	#print(current_state)
+
 func process_physics(delta: float) -> void:
 	var new_state = current_state.process_physics(delta)
 	if new_state:
@@ -36,3 +30,19 @@ func process_frame(delta: float) -> void:
 	var new_state = current_state.process_frame(delta)
 	if new_state:
 		change_state(new_state)
+		
+func _on_view_area_body_entered(body: Node2D) -> void: # handles chase on
+	if body.is_in_group("Player"):
+		change_state($chase)
+		
+func _on_view_area_body_exited(body: Node2D) -> void: # handles chase off
+	if body.is_in_group("Player"):
+		change_state($idle)
+
+func _on_hitbox_area_entered(area: Area2D) -> void: # start attack
+	if area.is_in_group("Player"):
+		change_state($attack)
+
+func _on_hitbox_area_exited(area: Area2D) -> void: # stop attack
+	if area.is_in_group("Player"):
+		change_state($chase)

@@ -24,9 +24,5 @@ func process_physics(delta: float) -> BaseEnemyState:
 	return null
 
 
-func _on_view_area_body_entered(body: Node2D):
-	if body.is_in_group("Player"):
-		return_state = "chase_state"
-
 func _on_timer_timeout():
 	return_state = "wander_state"

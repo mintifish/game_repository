@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://scripts/base_enemy_states/chase.gd" id="10_1kdg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f80"]
-size = Vector2(8, 5.5)
+size = Vector2(10, 5.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5d6h"]
 radius = 54.1479
@@ -96,11 +96,9 @@ script = ExtResource("9_2napc")
 chase_state = NodePath("../chase")
 current_animation = "front_attack"
 
-[connection signal="body_entered" from="View_area" to="state_machine/idle" method="_on_view_area_body_entered"]
-[connection signal="body_entered" from="View_area" to="state_machine/wander" method="_on_view_area_body_entered"]
-[connection signal="body_exited" from="View_area" to="state_machine/chase" method="_on_view_area_body_exited"]
-[connection signal="area_entered" from="Hitbox" to="state_machine/chase" method="_on_hitbox_area_entered"]
-[connection signal="area_exited" from="Hitbox" to="state_machine/chase" method="_on_hitbox_area_exited"]
-[connection signal="area_exited" from="Hitbox" to="state_machine/attack" method="_on_hitbox_area_exited"]
+[connection signal="body_entered" from="View_area" to="state_machine" method="_on_view_area_body_entered"]
+[connection signal="body_exited" from="View_area" to="state_machine" method="_on_view_area_body_exited"]
+[connection signal="area_entered" from="Hitbox" to="state_machine" method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="state_machine" method="_on_hitbox_area_exited"]
 [connection signal="timeout" from="state_machine/idle/Timer" to="state_machine/idle" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_machine/wander/Timer" to="state_machine/wander" method="_on_timer_timeout"]
