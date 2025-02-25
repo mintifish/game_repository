@@ -7,8 +7,6 @@ extends BaseEnemyState
 
 func enter() -> void:
 	super()
-	parent.animations.play(current_animation)
-	
 	parent.velocity = Vector2.ZERO
 	timer.start()
 	return_state = ""

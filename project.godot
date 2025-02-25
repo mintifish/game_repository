@@ -31,8 +31,9 @@ folder_colors={
 "res://art/": "red",
 "res://base_enemy_state_machine/": "orange",
 "res://player_state_machine/": "yellow",
-"res://scenes/": "green",
-"res://scripts/": "teal"
+"res://resources/": "green",
+"res://scenes/": "teal",
+"res://scripts/": "blue"
 }
 
 [global_group]

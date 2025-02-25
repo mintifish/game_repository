@@ -5,7 +5,6 @@ extends BaseEnemyState
 var move_to_player = true
 
 func enter():
-	parent.animations.play(current_animation)
 	move_to_player = true
 	return_state = ""
 
@@ -17,8 +16,8 @@ func process_physics(delta: float) -> BaseEnemyState:
 	if move_to_player:
 		var direction = (Global.player_position - parent.position).normalized()
 		parent.velocity = Vector2(
-			move_toward(parent.velocity.x, direction.x * speed, acceleration * delta),
-			move_toward(parent.velocity.y, direction.y * speed, acceleration * delta)
+			move_toward(parent.velocity.x, direction.x * parent.speed, parent.acceleration * delta),
+			move_toward(parent.velocity.y, direction.y * parent.speed, parent.acceleration * delta)
 		)
 	else:
 		return attack_state

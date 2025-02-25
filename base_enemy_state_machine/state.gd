@@ -1,11 +1,6 @@
 class_name BaseEnemyState
 extends Node
 
-@export var current_animation: String
-
-@export var speed: float = 250
-@export var acceleration: float = 1000
-
 var return_state = ""
 
 var parent: BaseEnemy

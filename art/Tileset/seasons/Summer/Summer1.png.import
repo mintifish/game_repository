@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmjgksaw7fl6u"
-path="res://.godot/imported/Fall4.png-0c859bc4e2359ff947a7f8ce285b4eb1.ctex"
+uid="uid://bq518two16bwv"
+path="res://.godot/imported/Summer1.png-981f4b1bcdf21e7ac7e68b66ff9b4303.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Tileset/Fall/Fall4.png"
-dest_files=["res://.godot/imported/Fall4.png-0c859bc4e2359ff947a7f8ce285b4eb1.ctex"]
+source_file="res://art/Tileset/seasons/Summer/Summer1.png"
+dest_files=["res://.godot/imported/Summer1.png-981f4b1bcdf21e7ac7e68b66ff9b4303.ctex"]
 
 [params]
 

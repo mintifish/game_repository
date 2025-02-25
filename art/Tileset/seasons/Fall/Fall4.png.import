@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx3tihvqy3qut"
-path="res://.godot/imported/Spring5.png-bc23d1439cb10428e06ff702e493f7a0.ctex"
+uid="uid://dmjgksaw7fl6u"
+path="res://.godot/imported/Fall4.png-2c39093b4f2b501e17de281787fb78f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Tileset/Spring/Spring5.png"
-dest_files=["res://.godot/imported/Spring5.png-bc23d1439cb10428e06ff702e493f7a0.ctex"]
+source_file="res://art/Tileset/seasons/Fall/Fall4.png"
+dest_files=["res://.godot/imported/Fall4.png-2c39093b4f2b501e17de281787fb78f3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgvcd5n4aseue"
-path="res://.godot/imported/Winter1.png-4e409da3fe21ed560b24635577b56e27.ctex"
+uid="uid://cutq7mec8sivt"
+path="res://.godot/imported/Winter2.png-6d2472b73a459f9c298d234088ab5860.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Tileset/Winter/Winter1.png"
-dest_files=["res://.godot/imported/Winter1.png-4e409da3fe21ed560b24635577b56e27.ctex"]
+source_file="res://art/Tileset/seasons/Winter/Winter2.png"
+dest_files=["res://.godot/imported/Winter2.png-6d2472b73a459f9c298d234088ab5860.ctex"]
 
 [params]
 
