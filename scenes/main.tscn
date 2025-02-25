@@ -1,18 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://enlgjks5pxns"]
+[gd_scene load_steps=6 format=3 uid="uid://enlgjks5pxns"]
 
 [ext_resource type="PackedScene" uid="uid://di4b3fet5cvsw" path="res://scenes/player.tscn" id="1_f0o3s"]
 [ext_resource type="PackedScene" uid="uid://b0dtuihybjlcv" path="res://scenes/base_enemy.tscn" id="2_ndrow"]
+[ext_resource type="Resource" uid="uid://ekyij364bri6" path="res://resources/enemy_resources/lava_blob.tres" id="3_wv1wm"]
+[ext_resource type="Resource" uid="uid://wxkuaklkrp6l" path="res://resources/enemy_resources/blue_blob.tres" id="4_nv0xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5shdy"]
 size = Vector2(20, 96)
 
 [node name="main" type="Node2D"]
 
-[node name="base_enemy" parent="." instance=ExtResource("2_ndrow")]
-position = Vector2(332, 199)
-
 [node name="player" parent="." instance=ExtResource("1_f0o3s")]
 position = Vector2(240, 135)
+
+[node name="green_blob" parent="." instance=ExtResource("2_ndrow")]
+position = Vector2(161, 213)
+
+[node name="lava_blob" parent="." instance=ExtResource("2_ndrow")]
+position = Vector2(161, 89)
+stats = ExtResource("3_wv1wm")
+
+[node name="blue_blob" parent="." instance=ExtResource("2_ndrow")]
+position = Vector2(162, 151)
+stats = ExtResource("4_nv0xq")
 
 [node name="Area2D" type="Area2D" parent="."]
 

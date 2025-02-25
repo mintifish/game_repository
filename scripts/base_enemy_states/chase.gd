@@ -6,6 +6,7 @@ var move_to_player = true
 
 func enter():
 	move_to_player = true
+	parent.animated_sprite.play(current_animation)
 	return_state = ""
 
 func process_physics(delta: float) -> BaseEnemyState:

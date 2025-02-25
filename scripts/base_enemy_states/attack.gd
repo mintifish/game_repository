@@ -1,11 +1,12 @@
 extends BaseEnemyState
 
 @export var chase_state: BaseEnemyState
-@export var damage_dealt: float = 20
+
 
 var has_dealt_damage: bool = false
 
 func enter():
+	parent.animated_sprite.play(current_animation)
 	return_state = ""
 	has_dealt_damage = false  # Reset the flag on enter
 
@@ -14,7 +15,13 @@ func process_physics(delta: float) -> BaseEnemyState:
 		"chase_state":
 			return chase_state
 
-	Global.player_current_hp -= damage_dealt
+	if parent.animated_sprite.get_frame() == 7 and not has_dealt_damage:
+		Global.player_current_hp -= parent.attack_damage
+		has_dealt_damage = true
+
+	if parent.animated_sprite.get_frame() != 7:
+		has_dealt_damage = false
+
 		
 	return null
 

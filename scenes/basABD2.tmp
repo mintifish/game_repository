@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://b0dtuihybjlcv"]
 
 [ext_resource type="Script" path="res://scripts/base_enemy.gd" id="1_xg6lj"]
-[ext_resource type="Resource" uid="uid://c3yf7161nijxp" path="res://resources/enemy_resources/green_blob.tres" id="2_8qrsh"]
+[ext_resource type="Resource" uid="uid://c3yf7161nijxp" path="res://resources/blue_blob.tres" id="2_8qrsh"]
 [ext_resource type="PackedScene" uid="uid://fbuophhiupub" path="res://base_enemy_state_machine/state_machine.tscn" id="6_6iibe"]
 [ext_resource type="Script" path="res://base_enemy_state_machine/state_machine.gd" id="7_ecft6"]
 [ext_resource type="Script" path="res://scripts/base_enemy_states/idle.gd" id="8_pkqig"]
@@ -43,7 +43,6 @@ shape = SubResource("RectangleShape2D_8x1p1")
 debug_color = Color(1, 0, 0.105882, 0.172549)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1)
 scale = Vector2(0.617219, 0.663743)
 sprite_frames = SubResource("SpriteFrames_rjqsw")
 animation = &""

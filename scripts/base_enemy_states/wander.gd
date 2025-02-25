@@ -10,6 +10,7 @@ func enter() -> void:
 	super()
 	direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
 	timer.start()
+	parent.animated_sprite.play(current_animation)
 	return_state = ""
 
 func process_physics(delta: float) -> BaseEnemyState:
@@ -18,10 +19,10 @@ func process_physics(delta: float) -> BaseEnemyState:
 			return idle_state
 		"chase_state":
 			return chase_state
-
+			
 	parent.velocity = Vector2(
-		move_toward(parent.velocity.x, direction.x * parent.speed, parent.acceleration * delta),
-		move_toward(parent.velocity.y, direction.y * parent.speed, parent.acceleration * delta))
+		move_toward(parent.velocity.x, direction.x * parent.speed / 2, parent.acceleration * delta),
+		move_toward(parent.velocity.y, direction.y * parent.speed / 2, parent.acceleration * delta))
 		
 	parent.move_and_slide()
 	return null

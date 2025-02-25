@@ -3,6 +3,8 @@ extends Node
 
 var return_state = ""
 
+@export var current_animation: String
+
 var parent: BaseEnemy
 
 func enter() -> void:
