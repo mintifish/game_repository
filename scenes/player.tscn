@@ -1,6 +1,7 @@
-[gd_scene load_steps=99 format=3 uid="uid://di4b3fet5cvsw"]
+[gd_scene load_steps=101 format=3 uid="uid://di4b3fet5cvsw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ryxk6"]
+[ext_resource type="Resource" uid="uid://bk81lp60snu4y" path="res://resources/wepon_resources/iron_sword.tres" id="2_5t7q8"]
 [ext_resource type="Texture2D" uid="uid://c8o4euks4ie8w" path="res://art/player/Basic/idle.png" id="2_jxvw5"]
 [ext_resource type="Texture2D" uid="uid://bnkaabmd8l3lq" path="res://art/player/Attack/sword.png" id="2_rwapj"]
 [ext_resource type="Texture2D" uid="uid://kwu5xjd0sr8u" path="res://art/player/Basic/run.png" id="3_bkvor"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b5fhavs4vuji3" path="res://art/player/Basic/walk.png" id="4_hqlnf"]
 [ext_resource type="Texture2D" uid="uid://btxjmnkb7l2ed" path="res://art/player/Basic/death.png" id="5_ht67h"]
 [ext_resource type="Script" path="res://scripts/player_states/run.gd" id="7_nciuy"]
+[ext_resource type="Texture2D" uid="uid://c71g055xt50yc" path="res://art/player/sword/IronSword.png" id="8_30x47"]
 [ext_resource type="Script" path="res://scripts/player_states/walk.gd" id="8_lpt6j"]
 [ext_resource type="Script" path="res://scripts/player_states/attack.gd" id="11_lqfur"]
 
@@ -677,6 +679,7 @@ animations = [{
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(0, -5)
 script = ExtResource("1_ryxk6")
+wepon_stats = ExtResource("2_5t7q8")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 5)
@@ -698,6 +701,12 @@ polygon = PackedVector2Array(0, 0, 18, -8, 18, 9)
 [node name="animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l17t8")
 animation = &"side_attack_sword_1"
+
+[node name="wepon" type="Sprite2D" parent="."]
+rotation = 2.4295
+scale = Vector2(0.879999, 0.879999)
+texture = ExtResource("8_30x47")
+offset = Vector2(17, -17)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
@@ -731,7 +740,5 @@ script = ExtResource("11_lqfur")
 idle_state = NodePath("../idle")
 run_state = NodePath("../run")
 current_animation = "front_idle"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="animation_finished" from="animations" to="state_machine/attack" method="_on_animations_animation_finished"]

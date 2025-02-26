@@ -12,17 +12,6 @@ func handle_attack_animation():
 	var mouse_pos = parent.get_global_mouse_position()
 	var direction = (mouse_pos - parent.global_position).normalized()
 
-	if abs(direction.x) > abs(direction.y):
-		# Horizontal attack
-		parent.animations.flip_h = direction.x < 0
-		parent.animations.play("side_attack_sword_1")
-	else:
-		# Vertical attack
-		if direction.y < 0:
-			parent.animations.play("back_attack_sword_1")
-		else:
-			parent.animations.play("front_attack_sword_1")
-
 func process_input(event: InputEvent) -> PlayerState:
 	if parent.player_direction != Vector2.ZERO:
 		parent.player_last_direction = parent.player_direction
