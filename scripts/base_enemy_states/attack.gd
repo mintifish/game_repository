@@ -15,6 +15,7 @@ func process_physics(delta: float) -> BaseEnemyState:
 
 	if parent.animated_sprite.get_frame() == 7 and not has_dealt_damage:
 		Global.player_current_hp -= parent.attack_damage
+		Global.player_taken_damage.emit()
 		has_dealt_damage = true
 
 	if parent.animated_sprite.get_frame() != 7:

@@ -25,6 +25,7 @@ func _ready() -> void:
 	weapon_texture.texture = weapon_stats.texture
 	weapon_collision_shape.shape = weapon_stats.collision_shape
 	
+	Global.player_taken_damage.connect(_on_player_taken_damage)
 	state_machine.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -50,6 +51,9 @@ func update_health_bar():
 		if Global.player_current_hp >= Global.player_max_hp:
 			is_regenerating = false
 			Global.player_current_hp = Global.player_max_hp
-			
+	
 func _on_regen_timer_timeout() -> void:
 	is_regenerating = true
+
+func _on_player_taken_damage():
+	is_regenerating = false
