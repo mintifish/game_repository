@@ -98,6 +98,7 @@ current_animation = "front_attack"
 
 [connection signal="body_entered" from="View_area" to="state_machine" method="_on_view_area_body_entered"]
 [connection signal="body_exited" from="View_area" to="state_machine" method="_on_view_area_body_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="state_machine" method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="state_machine" method="_on_hitbox_area_exited"]
 [connection signal="timeout" from="state_machine/idle/Timer" to="state_machine/idle" method="_on_timer_timeout"]

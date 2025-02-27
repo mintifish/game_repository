@@ -562,7 +562,7 @@ animation = &"back_idle"
 texture = ExtResource("8_30x47")
 offset = Vector2(17.5, -17.5)
 
-[node name="WeaponArea2D" type="Area2D" parent="weapon"]
+[node name="WeaponArea2D" type="Area2D" parent="weapon" groups=["Weapon"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weapon/WeaponArea2D"]
 rotation = -0.785398

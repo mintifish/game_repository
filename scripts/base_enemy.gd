@@ -42,3 +42,16 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Weapon"):
+		current_hp -= Global.weapon_damage_strenght
+		health_bar.visible = true
+		update_health_bar()
+
+func update_health_bar():
+	if current_hp <= 0:
+		queue_free()
+	else:
+		if health_bar.value != current_hp:
+			health_bar.value = current_hp
