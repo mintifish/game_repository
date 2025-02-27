@@ -10,8 +10,7 @@ var regen_speed: float = 0.1
 var is_regenerating: bool = false
 
 var player_direction: Vector2
-var player_last_direction: Vector2
-var player_last_velocity: Vector2
+var animation_direction: Vector2
 
 @export var weapon_stats: WeaponResource
 @onready var weapon_texture = $weapon
@@ -31,6 +30,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
+	if player_direction != Vector2.ZERO:
+		animation_direction = player_direction
 	state_machine.process_physics(delta)
 	Global.player_position = position
 	update_health_bar()

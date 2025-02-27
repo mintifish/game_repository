@@ -2,7 +2,9 @@ extends BaseEnemyState
 
 @export var idle_state: BaseEnemyState
 @export var attack_state: BaseEnemyState
+
 var move_to_player = true
+
 
 func enter():
 	move_to_player = true
@@ -13,7 +15,6 @@ func process_physics(delta: float) -> BaseEnemyState:
 	match return_state:
 		"idle_state":
 			return idle_state
-
 	if move_to_player:
 		var direction = (Global.player_position - parent.position).normalized()
 		parent.velocity = Vector2(

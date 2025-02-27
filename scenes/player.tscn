@@ -540,7 +540,8 @@ animations = [{
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_0f0xk"]
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(0, -5)
+y_sort_enabled = true
+position = Vector2(0, -3)
 script = ExtResource("1_ryxk6")
 weapon_stats = ExtResource("2_5t7q8")
 
@@ -612,6 +613,9 @@ script = ExtResource("11_lqfur")
 idle_state = NodePath("../idle")
 run_state = NodePath("../run")
 current_animation = "front_idle"
+
+[node name="AttackCooldown" type="Timer" parent="state_machine/attack"]
+one_shot = true
 
 [node name="RegenTimer" type="Timer" parent="."]
 wait_time = 2.0

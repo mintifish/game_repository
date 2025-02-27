@@ -25,7 +25,8 @@ size = Vector2(10, 10)
 animations = []
 
 [node name="base_enemy" type="CharacterBody2D"]
-position = Vector2(0, -4)
+y_sort_enabled = true
+position = Vector2(0, -2)
 script = ExtResource("1_xg6lj")
 stats = ExtResource("2_8qrsh")
 
@@ -43,6 +44,8 @@ debug_color = Color(1, 0, 0.105882, 0.0901961)
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+z_index = -1
+z_as_relative = false
 shape = SubResource("RectangleShape2D_8x1p1")
 debug_color = Color(1, 0, 0.105882, 0.172549)
 

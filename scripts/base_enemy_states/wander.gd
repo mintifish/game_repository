@@ -3,6 +3,7 @@ extends BaseEnemyState
 @export var idle_state: BaseEnemyState
 @export var chase_state: BaseEnemyState
 @onready var timer = $Timer
+
 var direction =  Vector2.ZERO
 
 
@@ -19,7 +20,6 @@ func process_physics(delta: float) -> BaseEnemyState:
 			return idle_state
 		"chase_state":
 			return chase_state
-			
 	parent.velocity = Vector2(
 		move_toward(parent.velocity.x, direction.x * parent.speed / 2, parent.acceleration * delta),
 		move_toward(parent.velocity.y, direction.y * parent.speed / 2, parent.acceleration * delta))

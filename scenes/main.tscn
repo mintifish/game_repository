@@ -10,22 +10,25 @@ size = Vector2(20, 96)
 
 [node name="main" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource("1_f0o3s")]
-position = Vector2(240, 135)
-
-[node name="green_blob" parent="." instance=ExtResource("2_ndrow")]
-position = Vector2(161, 213)
-
-[node name="lava_blob" parent="." instance=ExtResource("2_ndrow")]
-position = Vector2(161, 89)
-stats = ExtResource("3_wv1wm")
-
-[node name="blue_blob" parent="." instance=ExtResource("2_ndrow")]
-position = Vector2(162, 151)
-stats = ExtResource("4_nv0xq")
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(272, 135)
 shape = SubResource("RectangleShape2D_5shdy")
+
+[node name="Ysorting" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="player" parent="Ysorting" instance=ExtResource("1_f0o3s")]
+position = Vector2(240, 135)
+
+[node name="green_blob" parent="Ysorting" instance=ExtResource("2_ndrow")]
+position = Vector2(161, 213)
+
+[node name="lava_blob" parent="Ysorting" instance=ExtResource("2_ndrow")]
+position = Vector2(161, 89)
+stats = ExtResource("3_wv1wm")
+
+[node name="blue_blob" parent="Ysorting" instance=ExtResource("2_ndrow")]
+position = Vector2(162, 151)
+stats = ExtResource("4_nv0xq")

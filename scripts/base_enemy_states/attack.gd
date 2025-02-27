@@ -1,7 +1,9 @@
 extends BaseEnemyState
 
 @export var chase_state: BaseEnemyState
+
 var has_dealt_damage: bool = false
+
 
 func enter():
 	parent.animated_sprite.play(current_animation)
@@ -21,8 +23,8 @@ func process_physics(delta: float) -> BaseEnemyState:
 	if parent.animated_sprite.get_frame() != 7:
 		has_dealt_damage = false
 
-		
 	return null
+
 
 func _on_hitbox_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player"):
