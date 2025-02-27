@@ -3,14 +3,15 @@ extends CharacterBody2D
 
 @onready var animations = $animations
 @onready var state_machine = $state_machine
-@onready var tool_hitbox = $ToolHitbox
 
 var player_direction: Vector2
 var player_last_direction: Vector2
 var player_last_velocity: Vector2
 
 @export var weapon_stats: WeaponResource
+
 @onready var weapon_texture = $weapon
+@onready var weapon_collision_shape = $weapon/WeaponArea2D/CollisionShape2D
 var weapon_damage_deal: float
 
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _ready() -> void:
 	
 	weapon_damage_deal = weapon_stats.damage
 	weapon_texture.texture = weapon_stats.texture
+	weapon_collision_shape.shape = weapon_stats.collision_shape
 	
 	state_machine.init(self)
 

@@ -17,7 +17,7 @@ func set_vars(pos: Vector2):
 			step_degrees = swing_speed
 			print("Right")
 		else:  # Left
-			start_degrees = -105
+			start_degrees = -75
 			end_degrees = -195
 			step_degrees = -swing_speed
 			print("Left")
