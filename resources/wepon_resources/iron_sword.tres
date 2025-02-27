@@ -9,5 +9,5 @@ points = PackedVector2Array(10, -3, 14, -3, 14, -5, 17, -8, 20, -5, 20, -4, 39, 
 [resource]
 script = ExtResource("1_llhcp")
 texture = ExtResource("2_y3y1p")
-damage = 20.0
+damage_strenght = 20.0
 collision_shape = SubResource("ConvexPolygonShape2D_mt7i8")

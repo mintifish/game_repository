@@ -35,9 +35,11 @@ func enter():
 	set_vars(parent.get_global_mouse_position() - parent.global_position)
 	parent.weapon_texture.rotation_degrees = current_degrees
 	parent.weapon_texture.visible = true
+	Global.weapon_attack_ip = true
 
 func exit():
 	parent.weapon_texture.visible = false
+	Global.weapon_attack_ip = false
 	
 func process_input(event: InputEvent) -> PlayerState:
 	parent.player_last_direction = parent.player_direction

@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Weapon"):
+	if area.is_in_group("Weapon") and Global.weapon_attack_ip:
 		current_hp -= Global.weapon_damage_strenght
 		health_bar.visible = true
 		update_health_bar()
