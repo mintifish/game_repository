@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://di4b3fet5cvsw"]
+[gd_scene load_steps=86 format=3 uid="uid://di4b3fet5cvsw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ryxk6"]
 [ext_resource type="Resource" uid="uid://bk81lp60snu4y" path="res://resources/wepon_resources/iron_sword.tres" id="2_5t7q8"]
@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://btxjmnkb7l2ed" path="res://art/player/Basic/death.png" id="5_ht67h"]
 [ext_resource type="Script" path="res://scripts/player_states/run.gd" id="7_nciuy"]
 [ext_resource type="Texture2D" uid="uid://ciofr821b1kyr" path="res://art/player/sword/IronSword.png" id="8_30x47"]
+[ext_resource type="Texture2D" uid="uid://bdbod53mr8pt5" path="res://art/GUI/health_bar/progress bar medium rounded progress tintable grey.png" id="8_33mqo"]
 [ext_resource type="Script" path="res://scripts/player_states/walk.gd" id="8_lpt6j"]
+[ext_resource type="Texture2D" uid="uid://2omb0bcn8tf7" path="res://art/GUI/health_bar/progress bar medium rounded over.png" id="9_p7xy7"]
+[ext_resource type="Texture2D" uid="uid://b5aanuxqf112c" path="res://art/GUI/health_bar/progress bar medium rounded progress green.png" id="10_irxfe"]
 [ext_resource type="Script" path="res://scripts/player_states/attack.gd" id="11_lqfur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f80"]
@@ -568,6 +571,17 @@ shape = SubResource("ConvexPolygonShape2D_0f0xk")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -186.0
+offset_top = -101.0
+offset_right = -146.0
+offset_bottom = -61.0
+scale = Vector2(3.52014, 3.52014)
+value = 10.0
+texture_under = ExtResource("8_33mqo")
+texture_over = ExtResource("9_p7xy7")
+texture_progress = ExtResource("10_irxfe")
+
 [node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_hcrjv")]
 starting_state = NodePath("idle")
 
@@ -597,3 +611,8 @@ script = ExtResource("11_lqfur")
 idle_state = NodePath("../idle")
 run_state = NodePath("../run")
 current_animation = "front_idle"
+
+[node name="RegenTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

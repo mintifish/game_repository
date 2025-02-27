@@ -1,7 +1,6 @@
 extends BaseEnemyState
 
 @export var chase_state: BaseEnemyState
-
 var has_dealt_damage: bool = false
 
 func enter():

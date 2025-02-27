@@ -14,7 +14,6 @@ func change_state(new_state: PlayerState) -> void:
 
 	current_state = new_state
 	current_state.enter()
-	print(current_state)
 
 func process_physics(delta: float) -> void:
 	var new_state = current_state.process_physics(delta)

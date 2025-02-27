@@ -15,23 +15,19 @@ func set_vars(pos: Vector2):
 			start_degrees = -15
 			end_degrees = 105
 			step_degrees = swing_speed
-			print("Right")
 		else:  # Left
 			start_degrees = -75
 			end_degrees = -195
 			step_degrees = -swing_speed
-			print("Left")
 	else:  # Up or Down movement
 		if pos.y > 0:  # Down
 			start_degrees = 75
 			end_degrees = 195 
 			step_degrees = swing_speed
-			print("Down")
 		else:  # Up
 			start_degrees = -105
 			end_degrees = 15 
 			step_degrees = swing_speed
-			print("Up")
 
 	current_degrees = start_degrees
 
