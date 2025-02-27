@@ -7,7 +7,7 @@ var current_degrees: float
 var end_degrees: float
 var start_degrees: float
 var step_degrees: float
-var swing_speed: float = 400
+var swing_speed: float = 300
 
 func set_vars(pos: Vector2):
 	if abs(pos.x) > abs(pos.y):
@@ -49,6 +49,7 @@ func process_input(event: InputEvent) -> PlayerState:
 	return null
 
 func process_physics(delta: float) -> PlayerState:
+	parent.player_last_velocity = parent.velocity
 	
 	parent.velocity = Vector2(
 		move_toward(parent.velocity.x, parent.player_direction.x * speed, acceleration * delta),

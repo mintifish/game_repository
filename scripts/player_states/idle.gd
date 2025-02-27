@@ -3,6 +3,8 @@ extends PlayerState
 @export var run_state: PlayerState
 @export var attack_state: PlayerState
 
+func enter():
+	parent.velocity = Vector2.ZERO
 
 func process_input(event: InputEvent) -> PlayerState:
 	if Input.is_action_just_pressed("left_click"):
@@ -13,12 +15,12 @@ func process_input(event: InputEvent) -> PlayerState:
 	return null
 
 func process_physics(delta: float) -> PlayerState:
-	if parent.player_last_direction.x < 0 or parent.player_last_direction.x > 0:
-		parent.animations.flip_h = parent.player_last_direction.x < 0
+	if parent.player_last_velocity.x < 0 or parent.player_last_velocity.x > 0:
+		parent.animations.flip_h = parent.player_last_velocity.x < 0
 		parent.animations.play("side_idle")
-	elif parent.player_last_direction.y < 0:
+	elif parent.player_last_velocity.y < 0:
 		parent.animations.play("back_idle")
-	elif parent.player_last_direction.y > 0:
+	elif parent.player_last_velocity.y > 0:
 		parent.animations.play("front_idle")
 	
 	if parent.player_direction != Vector2.ZERO: #Plyer is moving and direction not 0

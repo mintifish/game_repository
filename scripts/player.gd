@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 var player_direction: Vector2
 var player_last_direction: Vector2
+var player_last_velocity: Vector2
 
 @export var weapon_stats: WeaponResource
 @onready var weapon_texture = $weapon

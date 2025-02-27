@@ -23,14 +23,14 @@ func process_physics(delta: float) -> PlayerState:
 	elif parent.player_direction.y > 0:
 		parent.animations.play("front_run")
 	
+	parent.player_last_velocity = parent.velocity
+	
 	parent.velocity = Vector2(
  	   move_toward(parent.velocity.x, parent.player_direction.x * speed, acceleration * delta),
  	   move_toward(parent.velocity.y, parent.player_direction.y * speed, acceleration * delta)
 	)
 
-
 	if parent.velocity == Vector2.ZERO: #Standing Still
 		return idle_state
-
 	parent.move_and_slide()
 	return null
