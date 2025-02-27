@@ -8,10 +8,8 @@ func process_input(event: InputEvent) -> PlayerState:
 	if Input.is_action_just_pressed("left_click"):
 		return attack_state
 		
-	var new_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if new_direction != Vector2.ZERO:
-		parent.player_direction = new_direction
-
+	parent.player_last_direction = parent.player_direction
+	parent.player_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return null
 
 func process_physics(delta: float) -> PlayerState:

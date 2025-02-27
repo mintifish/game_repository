@@ -10,8 +10,7 @@ func process_input(event: InputEvent) -> PlayerState:
 	if Input.is_action_pressed("walk"):
 		return walk_state
 		
-	if parent.player_direction != Vector2.ZERO:
-		parent.player_last_direction = parent.player_direction
+	parent.player_last_direction = parent.player_direction
 	parent.player_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return null
 
@@ -28,7 +27,6 @@ func process_physics(delta: float) -> PlayerState:
  	   move_toward(parent.velocity.x, parent.player_direction.x * speed, acceleration * delta),
  	   move_toward(parent.velocity.y, parent.player_direction.y * speed, acceleration * delta)
 	)
-	print("Direction:", parent.player_direction, " Velocity:", parent.velocity)
 
 
 	if parent.velocity == Vector2.ZERO: #Standing Still

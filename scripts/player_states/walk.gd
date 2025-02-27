@@ -11,8 +11,7 @@ func process_input(event: InputEvent) -> PlayerState:
 	if Input.is_action_just_released("walk"): #Not pressing walk
 		return run_state
 	
-	if parent.player_direction != Vector2.ZERO:
-		parent.player_last_direction = parent.player_direction
+	parent.player_last_direction = parent.player_direction
 	parent.player_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return null
 

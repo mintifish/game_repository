@@ -2,36 +2,73 @@ extends PlayerState
 
 @export var idle_state: PlayerState
 @export var run_state: PlayerState
-var attack_finished: bool
+
+var current_degrees: float
+var end_degrees: float
+var start_degrees: float
+var step_degrees: float
+var swing_speed: float = 400
+
+func set_vars(pos: Vector2):
+	if abs(pos.x) > abs(pos.y):
+		if pos.x > 0:
+			start_degrees = -15
+			end_degrees = 105
+			step_degrees = swing_speed
+			print("Right")
+		else:  # Left
+			start_degrees = -105
+			end_degrees = -195
+			step_degrees = -swing_speed
+			print("Left")
+	else:  # Up or Down movement
+		if pos.y > 0:  # Down
+			start_degrees = 75
+			end_degrees = 195 
+			step_degrees = swing_speed
+			print("Down")
+		else:  # Up
+			start_degrees = -105
+			end_degrees = 15 
+			step_degrees = swing_speed
+			print("Up")
+
+	current_degrees = start_degrees
 
 func enter():
-	attack_finished = false
-	handle_attack_animation()
+	set_vars(parent.get_global_mouse_position() - parent.global_position)
+	parent.weapon_texture.rotation_degrees = current_degrees
+	parent.weapon_texture.visible = true
 
-func handle_attack_animation():
-	var mouse_pos = parent.get_global_mouse_position()
-	var direction = (mouse_pos - parent.global_position).normalized()
-
+func exit():
+	parent.weapon_texture.visible = false
+	
 func process_input(event: InputEvent) -> PlayerState:
-	if parent.player_direction != Vector2.ZERO:
-		parent.player_last_direction = parent.player_direction
+	parent.player_last_direction = parent.player_direction
 	parent.player_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return null
 
 func process_physics(delta: float) -> PlayerState:
+	
 	parent.velocity = Vector2(
 		move_toward(parent.velocity.x, parent.player_direction.x * speed, acceleration * delta),
 		move_toward(parent.velocity.y, parent.player_direction.y * speed, acceleration * delta)
 	)
-
-	if attack_finished:
+	
+	# Process weapon swing
+	if abs(current_degrees - end_degrees) < abs(step_degrees * delta):
+		current_degrees = end_degrees
+	else:
+		current_degrees += step_degrees * delta
+	
+	parent.weapon_texture.rotation_degrees = current_degrees
+	
+	# Transition to different states
+	if current_degrees == end_degrees:
 		if parent.player_direction == Vector2.ZERO:
 			return idle_state
 		else:
 			return run_state
-
+	
 	parent.move_and_slide()
 	return null
-
-func _on_animations_animation_finished() -> void:
-	attack_finished = true
