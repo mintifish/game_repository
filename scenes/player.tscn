@@ -576,8 +576,8 @@ zoom = Vector2(5, 5)
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = -186.0
 offset_top = -101.0
-offset_right = -146.0
-offset_bottom = -61.0
+offset_right = -154.0
+offset_bottom = -93.0
 scale = Vector2(3.52014, 3.52014)
 value = 10.0
 texture_under = ExtResource("8_33mqo")

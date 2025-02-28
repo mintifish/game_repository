@@ -75,15 +75,16 @@ starting_state = NodePath("idle")
 script = ExtResource("8_pkqig")
 wander_state = NodePath("../wander")
 chase_state = NodePath("../chase")
-current_animation = "front_idle"
+current_animation = "idle"
 
 [node name="Timer" type="Timer" parent="state_machine/idle"]
+autostart = true
 
 [node name="wander" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "chase_state")]
 script = ExtResource("9_5n1mo")
 idle_state = NodePath("../idle")
 chase_state = NodePath("../chase")
-current_animation = "front_walk"
+current_animation = "walk"
 
 [node name="Timer" type="Timer" parent="state_machine/wander"]
 wait_time = 1.5
@@ -92,12 +93,12 @@ wait_time = 1.5
 script = ExtResource("10_1kdg3")
 idle_state = NodePath("../idle")
 attack_state = NodePath("../attack")
-current_animation = "front_walk"
+current_animation = "walk"
 
 [node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("chase_state")]
 script = ExtResource("9_2napc")
 chase_state = NodePath("../chase")
-current_animation = "front_attack"
+current_animation = "attack"
 
 [connection signal="body_entered" from="View_area" to="state_machine" method="_on_view_area_body_entered"]
 [connection signal="body_exited" from="View_area" to="state_machine" method="_on_view_area_body_exited"]

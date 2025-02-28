@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn5bjeyypxesf"
-path="res://.godot/imported/Slime1_Hurt_shadow.png-2aa3052ae6d063f61805de5c0c20451d.ctex"
+uid="uid://ds34t1avycrxt"
+path="res://.godot/imported/green.png-74ec62b09711cab34a143faffca79df1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemys/Slime1/Hurt/Slime1_Hurt_shadow.png"
-dest_files=["res://.godot/imported/Slime1_Hurt_shadow.png-2aa3052ae6d063f61805de5c0c20451d.ctex"]
+source_file="res://player_state_machine/player_hb/green.png"
+dest_files=["res://.godot/imported/green.png-74ec62b09711cab34a143faffca79df1.ctex"]
 
 [params]
 

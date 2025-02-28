@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2b5qc3ng4ebc"
-path="res://.godot/imported/Slime1_Hurt_full.png-e237c8ffd61bf91c6420b1e04010560e.ctex"
+uid="uid://wylhtpnromam"
+path="res://.godot/imported/over.png-122e88d1e28ab2f3fe9a8ba8ef40cadc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemys/Slime1/Hurt/Slime1_Hurt_full.png"
-dest_files=["res://.godot/imported/Slime1_Hurt_full.png-e237c8ffd61bf91c6420b1e04010560e.ctex"]
+source_file="res://player_state_machine/player_hb/over.png"
+dest_files=["res://.godot/imported/over.png-122e88d1e28ab2f3fe9a8ba8ef40cadc.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3meb1sb5xh13"
-path="res://.godot/imported/Slime1_Idle_shadow.png-b6cc9affddbc081bbd22b42ab3416540.ctex"
+uid="uid://b0mqxa8q1bs7j"
+path="res://.godot/imported/attackt.png-ca15ea02e26dfb5127c8e032d5360b57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemys/Slime1/Idle/Slime1_Idle_shadow.png"
-dest_files=["res://.godot/imported/Slime1_Idle_shadow.png-b6cc9affddbc081bbd22b42ab3416540.ctex"]
+source_file="res://art/enemys/Slime1/attackt.png"
+dest_files=["res://.godot/imported/attackt.png-ca15ea02e26dfb5127c8e032d5360b57.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b50ixfegtliox"
-path="res://.godot/imported/Slime1_Run_full.png-ee6e0a62086fd5292dac4ceb9fcd9a5f.ctex"
+uid="uid://g1iu177reyo7"
+path="res://.godot/imported/under.png-3c74268db3c0ade6c44d023b8f9693b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemys/Slime1/Run/Slime1_Run_full.png"
-dest_files=["res://.godot/imported/Slime1_Run_full.png-ee6e0a62086fd5292dac4ceb9fcd9a5f.ctex"]
+source_file="res://player_state_machine/player_hb/under.png"
+dest_files=["res://.godot/imported/under.png-3c74268db3c0ade6c44d023b8f9693b0.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhwcnb8cqqon8"
-path="res://.godot/imported/Slime1_Idle_body.png-17a185f98211c42b9b76c3d36355c8fb.ctex"
+uid="uid://b5mjtk2l8c45c"
+path="res://.godot/imported/hurt.png-64a0d2da09c0f286d726b2fb242122ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemys/Slime1/Idle/Slime1_Idle_body.png"
-dest_files=["res://.godot/imported/Slime1_Idle_body.png-17a185f98211c42b9b76c3d36355c8fb.ctex"]
+source_file="res://art/enemys/Slime1/hurt.png"
+dest_files=["res://.godot/imported/hurt.png-64a0d2da09c0f286d726b2fb242122ac.ctex"]
 
 [params]
 

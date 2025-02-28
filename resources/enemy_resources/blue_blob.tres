@@ -142,7 +142,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_d8ux0")
 }],
 "loop": true,
-"name": &"front_attack",
+"name": &"attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -165,7 +165,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8dc25")
 }],
 "loop": true,
-"name": &"front_idle",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -194,7 +194,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_r5s73")
 }],
 "loop": true,
-"name": &"front_walk",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -204,5 +204,5 @@ speed = 70.0
 attack_damage = 50.0
 acceleration = 1000.0
 max_hp = 100.0
-scale = Vector2(0.9, 0.9)
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_u7av5")

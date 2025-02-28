@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgf47seaiqwri"
-path="res://.godot/imported/Slime1_Attack_body.png-3663f2f677890ee0436f505d02ed3e3b.ctex"
+uid="uid://cyxs0cmo0kkif"
+path="res://.godot/imported/walk.png-39b7821a57256e26f97ed06625e07cfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemys/Slime1/Attack/Slime1_Attack_body.png"
-dest_files=["res://.godot/imported/Slime1_Attack_body.png-3663f2f677890ee0436f505d02ed3e3b.ctex"]
+source_file="res://art/enemys/Slime1/walk.png"
+dest_files=["res://.godot/imported/walk.png-39b7821a57256e26f97ed06625e07cfc.ctex"]
 
 [params]
 
