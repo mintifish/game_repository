@@ -19,7 +19,8 @@ var animation_direction: Vector2
 func _ready() -> void:
 	animations.play("front_idle")
 
-	Global.weapon_damage_strenght = weapon_stats.damage_strenght
+	Weapon.weapon_damage_strenght = weapon_stats.damage_strenght
+	Weapon.knockback_strength = weapon_stats.knoknockback_strength
 	weapon_animation.sprite_frames = weapon_stats.sprite_frames
 	weapon_collision_shape.shape = weapon_stats.collision_shape
 	

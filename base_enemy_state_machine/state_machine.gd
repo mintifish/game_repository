@@ -39,9 +39,12 @@ func _on_view_area_body_exited(body: Node2D) -> void: # handles chase off
 		change_state($idle)
 
 func _on_hitbox_area_entered(area: Area2D) -> void: # start attack
-	if area.is_in_group("Player"):
+	if area.is_in_group("Weapon") and Weapon.weapon_attack_ip:
+		change_state($hurt)
+	elif area.is_in_group("Player"):
 		change_state($attack)
 
-func _on_hitbox_area_exited(area: Area2D) -> void: # stop attack
+func _on_hitbox_area_exited(area: Area2D) -> void: # stop attack		
 	if area.is_in_group("Player"):
 		change_state($chase)
+		

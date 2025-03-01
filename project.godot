@@ -18,6 +18,7 @@ config/icon="res://art/project_icon.png"
 [autoload]
 
 Global="*res://scripts/global.gd"
+Weapon="*res://scripts/weapon.gd"
 
 [display]
 

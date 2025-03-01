@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b0dtuihybjlcv"]
+[gd_scene load_steps=43 format=3 uid="uid://b0dtuihybjlcv"]
 
 [ext_resource type="Script" path="res://scripts/base_enemy.gd" id="1_xg6lj"]
 [ext_resource type="Resource" uid="uid://c3yf7161nijxp" path="res://resources/enemy_resources/green_blob.tres" id="2_8qrsh"]
@@ -14,12 +14,13 @@
 [ext_resource type="Script" path="res://scripts/base_enemy_states/attack.gd" id="9_2napc"]
 [ext_resource type="Script" path="res://scripts/base_enemy_states/wander.gd" id="9_5n1mo"]
 [ext_resource type="Script" path="res://scripts/base_enemy_states/chase.gd" id="10_1kdg3"]
+[ext_resource type="Script" path="res://scripts/base_enemy_states/hurt.gd" id="15_vydh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f80"]
 size = Vector2(9, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5d6h"]
-radius = 54.1479
+radius = 118.017
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x1p1"]
 size = Vector2(13, 13)
@@ -279,9 +280,13 @@ script = ExtResource("9_2napc")
 chase_state = NodePath("../chase")
 current_animation = "attack"
 
+[node name="hurt" type="Node" parent="state_machine" node_paths=PackedStringArray("chase_state")]
+script = ExtResource("15_vydh2")
+chase_state = NodePath("../chase")
+current_animation = "hurt"
+
 [connection signal="body_entered" from="View_area" to="state_machine" method="_on_view_area_body_entered"]
 [connection signal="body_exited" from="View_area" to="state_machine" method="_on_view_area_body_exited"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="state_machine" method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="state_machine" method="_on_hitbox_area_exited"]
 [connection signal="timeout" from="state_machine/idle/Timer" to="state_machine/idle" method="_on_timer_timeout"]

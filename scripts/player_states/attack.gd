@@ -19,12 +19,12 @@ func enter():
 		
 		parent.weapon_collision_shape.disabled = false
 		parent.weapon_animation.visible = true
-		Global.weapon_attack_ip = true
+		Weapon.weapon_attack_ip = true
 
 func exit():
 	parent.weapon_collision_shape.disabled = true
 	parent.weapon_animation.visible = false
-	Global.weapon_attack_ip = false
+	Weapon.weapon_attack_ip = false
 	if attack_cooldown_timer.is_stopped():
 		attack_cooldown_timer.start()
 
