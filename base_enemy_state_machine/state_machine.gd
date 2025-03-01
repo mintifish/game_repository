@@ -30,7 +30,7 @@ func process_frame(delta: float) -> void:
 	if new_state:
 		change_state(new_state)
 		
-func _on_view_area_body_entered(body: Node2D) -> void: # handles chase on
+'''func _on_view_area_body_entered(body: Node2D) -> void: # handles chase on
 	if body.is_in_group("Player"):
 		change_state($chase)
 		
@@ -46,5 +46,5 @@ func _on_hitbox_area_entered(area: Area2D) -> void: # start attack
 
 func _on_hitbox_area_exited(area: Area2D) -> void: # stop attack		
 	if area.is_in_group("Player"):
-		change_state($chase)
+		change_state($chase)'''
 		

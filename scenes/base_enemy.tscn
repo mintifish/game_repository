@@ -20,7 +20,7 @@
 size = Vector2(9, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5d6h"]
-radius = 118.017
+radius = 51.2445
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x1p1"]
 size = Vector2(13, 13)
@@ -269,15 +269,17 @@ current_animation = "walk"
 [node name="Timer" type="Timer" parent="state_machine/wander"]
 wait_time = 1.5
 
-[node name="chase" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "attack_state")]
+[node name="chase" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "attack_state", "hurt_state")]
 script = ExtResource("10_1kdg3")
 idle_state = NodePath("../idle")
 attack_state = NodePath("../attack")
+hurt_state = NodePath("../hurt")
 current_animation = "walk"
 
-[node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("chase_state")]
+[node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("chase_state", "hurt_state")]
 script = ExtResource("9_2napc")
 chase_state = NodePath("../chase")
+hurt_state = NodePath("../hurt")
 current_animation = "attack"
 
 [node name="hurt" type="Node" parent="state_machine" node_paths=PackedStringArray("chase_state")]
@@ -285,9 +287,11 @@ script = ExtResource("15_vydh2")
 chase_state = NodePath("../chase")
 current_animation = "hurt"
 
-[connection signal="body_entered" from="View_area" to="state_machine" method="_on_view_area_body_entered"]
-[connection signal="body_exited" from="View_area" to="state_machine" method="_on_view_area_body_exited"]
-[connection signal="area_entered" from="Hitbox" to="state_machine" method="_on_hitbox_area_entered"]
-[connection signal="area_exited" from="Hitbox" to="state_machine" method="_on_hitbox_area_exited"]
+[connection signal="body_entered" from="View_area" to="state_machine/idle" method="_on_view_area_body_entered"]
+[connection signal="body_entered" from="View_area" to="state_machine/wander" method="_on_view_area_body_entered"]
+[connection signal="body_exited" from="View_area" to="state_machine/chase" method="_on_view_area_body_exited"]
+[connection signal="area_entered" from="Hitbox" to="state_machine/chase" method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="state_machine/attack" method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="state_machine/attack" method="_on_hitbox_area_exited"]
 [connection signal="timeout" from="state_machine/idle/Timer" to="state_machine/idle" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_machine/wander/Timer" to="state_machine/wander" method="_on_timer_timeout"]

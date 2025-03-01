@@ -30,3 +30,7 @@ func process_physics(delta: float) -> BaseEnemyState:
 
 func _on_timer_timeout():
 	return_state = "idle_state"
+
+func _on_view_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		return_state = "chase_state"
