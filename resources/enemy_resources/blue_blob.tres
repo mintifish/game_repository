@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="EnemyResource" load_steps=31 format=3 uid="uid://wxkuaklkrp6l"]
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=33 format=3 uid="uid://wxkuaklkrp6l"]
 
 [ext_resource type="Script" path="res://resources/enemy_resources/enemy_resource.gd" id="1_c2keu"]
 [ext_resource type="Texture2D" uid="uid://c4v0p5505aywr" path="res://art/enemys/Slime2/Attack/Slime2_Attack_body.png" id="2_onwwu"]
 [ext_resource type="Texture2D" uid="uid://bg81yujfgtrx8" path="res://art/enemys/Slime2/Idle/Slime2_Idle_body.png" id="3_8cwyq"]
 [ext_resource type="Texture2D" uid="uid://wyd6tfq8he0l" path="res://art/enemys/Slime2/Walk/Slime2_Walk_body.png" id="4_nkjpe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x1p1"]
+size = Vector2(13, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f80"]
+size = Vector2(9, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ssqj0"]
 atlas = ExtResource("2_onwwu")
@@ -201,8 +207,11 @@ animations = [{
 [resource]
 script = ExtResource("1_c2keu")
 speed = 70.0
-attack_damage = 50.0
 acceleration = 1000.0
-max_hp = 100.0
+attack_damage = 50.0
 scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_u7av5")
+hitbox_collision = SubResource("RectangleShape2D_8x1p1")
+main_collision = SubResource("RectangleShape2D_f7f80")
+max_hp = 100
+hb_offset = 1.5

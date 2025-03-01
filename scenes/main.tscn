@@ -211,7 +211,7 @@ position = Vector2(162, 151)
 stats = ExtResource("4_nv0xq")
 
 [node name="TileMap" type="TileMap" parent="."]
-z_index = -1
+z_index = -2
 format = 2
 
 [node name="water" type="TileMapLayer" parent="TileMap"]

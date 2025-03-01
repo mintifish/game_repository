@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://btxjmnkb7l2ed" path="res://art/player/Basic/death.png" id="5_ht67h"]
 [ext_resource type="Script" path="res://scripts/player_states/run.gd" id="7_nciuy"]
 [ext_resource type="Texture2D" uid="uid://b1nf1xrukdxhx" path="res://art/weapons/Iron_sword.png" id="7_trk57"]
+[ext_resource type="Texture2D" uid="uid://bdbod53mr8pt5" path="res://art/GUI/health_bar/progress bar medium rounded progress tintable grey.png" id="8_33mqo"]
 [ext_resource type="Script" path="res://scripts/player_states/walk.gd" id="8_lpt6j"]
-[ext_resource type="Texture2D" uid="uid://c7atd5tfqw1xt" path="res://art/GUI/health_bars/player_hb/under.png" id="8_nhrtp"]
-[ext_resource type="Texture2D" uid="uid://qaxg0fg1ppvr" path="res://art/GUI/health_bars/player_hb/over.png" id="9_d1ytv"]
-[ext_resource type="Texture2D" uid="uid://pa5d471jgs0e" path="res://art/GUI/health_bars/player_hb/green.png" id="10_4vb5e"]
+[ext_resource type="Texture2D" uid="uid://2omb0bcn8tf7" path="res://art/GUI/health_bar/progress bar medium rounded over.png" id="9_p7xy7"]
+[ext_resource type="Texture2D" uid="uid://b5aanuxqf112c" path="res://art/GUI/health_bar/progress bar medium rounded progress green.png" id="10_irxfe"]
 [ext_resource type="Script" path="res://scripts/player_states/attack.gd" id="11_lqfur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f80"]
@@ -611,9 +611,9 @@ offset_top = -101.0
 offset_right = -154.0
 offset_bottom = -93.0
 value = 10.0
-texture_under = ExtResource("8_nhrtp")
-texture_over = ExtResource("9_d1ytv")
-texture_progress = ExtResource("10_4vb5e")
+texture_under = ExtResource("8_33mqo")
+texture_over = ExtResource("9_p7xy7")
+texture_progress = ExtResource("10_irxfe")
 
 [node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_hcrjv")]
 starting_state = NodePath("idle")

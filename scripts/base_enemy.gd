@@ -5,13 +5,16 @@ extends CharacterBody2D
 
 @onready var state_machine = $state_machine
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  # Use AnimatedSprite2D
-@onready var collision: CollisionShape2D = $collision
-@onready var hitbox_collision: CollisionShape2D = $Hitbox/CollisionShape2D
 @onready var health_bar: TextureProgressBar = $TextureProgressBar
 
+@onready var main_collision: CollisionShape2D = $collision
+@onready var hitbox_collision: CollisionShape2D = $Hitbox/CollisionShape2D
+
 var speed: float
-var attack_damage: float
 var acceleration: float
+
+var attack_damage: float
+
 var max_hp: float
 var current_hp: float
 
@@ -19,18 +22,21 @@ var alive = true
 
 func _ready() -> void:
 	speed = stats.speed
-	attack_damage = stats.attack_damage
 	acceleration = stats.acceleration
+	
+	attack_damage = stats.attack_damage
 	
 	max_hp = stats.max_hp
 	current_hp = stats.max_hp
 	health_bar.max_value = stats.max_hp
 	health_bar.value = stats.max_hp
+	health_bar.position.y += stats.hb_offset
 	
 	animated_sprite.sprite_frames = stats.sprite_frames  
 	animated_sprite.scale = stats.scale
-	collision.scale = stats.scale * 1.2
-	hitbox_collision.scale = stats.scale * 1.2
+	
+	main_collision.shape = stats.main_collision
+	hitbox_collision.shape = stats.hitbox_collision
 	
 	state_machine.init(self)
 

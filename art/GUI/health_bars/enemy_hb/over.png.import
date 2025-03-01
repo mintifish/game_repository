@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdbod53mr8pt5"
-path="res://.godot/imported/progress bar medium rounded progress tintable grey.png-8d69e4bfb3cdaade63d0108720bb04b1.ctex"
+uid="uid://edfe5uuv4deh"
+path="res://.godot/imported/over.png-d57a7705e81d439c8de8977ff79f356d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/GUI/health_bar/progress bar medium rounded progress tintable grey.png"
-dest_files=["res://.godot/imported/progress bar medium rounded progress tintable grey.png-8d69e4bfb3cdaade63d0108720bb04b1.ctex"]
+source_file="res://art/GUI/health_bars/enemy_hb/over.png"
+dest_files=["res://.godot/imported/over.png-d57a7705e81d439c8de8977ff79f356d.ctex"]
 
 [params]
 
