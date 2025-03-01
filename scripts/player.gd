@@ -13,14 +13,14 @@ var player_direction: Vector2
 var animation_direction: Vector2
 
 @export var weapon_stats: WeaponResource
-@onready var weapon_texture = $weapon
-@onready var weapon_collision_shape = $weapon/WeaponArea2D/CollisionShape2D
+@onready var weapon_animation = $Weapon
+@onready var weapon_collision_shape = $Weapon/WeaponArea2D/CollisionShape2D
 
 func _ready() -> void:
 	animations.play("front_idle")
 
 	Global.weapon_damage_strenght = weapon_stats.damage_strenght
-	weapon_texture.texture = weapon_stats.texture
+	weapon_animation.sprite_frames = weapon_stats.sprite_frames
 	weapon_collision_shape.shape = weapon_stats.collision_shape
 	
 	Global.player_taken_damage.connect(_on_player_taken_damage)

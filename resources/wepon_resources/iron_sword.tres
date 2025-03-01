@@ -1,13 +1,42 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=4 format=3 uid="uid://bk81lp60snu4y"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=8 format=3 uid="uid://bk81lp60snu4y"]
 
 [ext_resource type="Script" path="res://resources/wepon_resources/weapon_resource.gd" id="1_llhcp"]
-[ext_resource type="Texture2D" uid="uid://ciofr821b1kyr" path="res://art/player/sword/IronSword.png" id="2_y3y1p"]
+[ext_resource type="Texture2D" uid="uid://b1nf1xrukdxhx" path="res://art/weapons/Iron_sword.png" id="2_b58ya"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mt7i8"]
-points = PackedVector2Array(10, -3, 14, -3, 14, -5, 17, -8, 20, -5, 20, -4, 39, -4, 43, 0, 39, 4, 20, 4, 20, 5, 17, 8, 14, 5, 14, 3, 10, 3, 6, 0)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_v66jt"]
+points = PackedVector2Array(0, 0, 11, -16, 10, -17, 10, -21, 14, -21, 30, -37, 43, -26, 48, -9, 48, 2, 43, 14, 33, 24, 18, 29, 5, 29, -4, 26, -8, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqm3y"]
+atlas = ExtResource("2_b58ya")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3ciq"]
+atlas = ExtResource("2_b58ya")
+region = Rect2(112, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpksw"]
+atlas = ExtResource("2_b58ya")
+region = Rect2(224, 0, 112, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71o4c"]
+animations = [{
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_aqm3y")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_r3ciq")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_gpksw")
+}],
+"loop": false,
+"name": &"swipe",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_llhcp")
-texture = ExtResource("2_y3y1p")
+sprite_frames = SubResource("SpriteFrames_71o4c")
 damage_strenght = 20.0
-collision_shape = SubResource("ConvexPolygonShape2D_mt7i8")
+collision_shape = SubResource("ConvexPolygonShape2D_v66jt")

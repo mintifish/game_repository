@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://di4b3fet5cvsw"]
+[gd_scene load_steps=90 format=3 uid="uid://di4b3fet5cvsw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ryxk6"]
 [ext_resource type="Resource" uid="uid://bk81lp60snu4y" path="res://resources/wepon_resources/iron_sword.tres" id="2_5t7q8"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b5fhavs4vuji3" path="res://art/player/Basic/walk.png" id="4_hqlnf"]
 [ext_resource type="Texture2D" uid="uid://btxjmnkb7l2ed" path="res://art/player/Basic/death.png" id="5_ht67h"]
 [ext_resource type="Script" path="res://scripts/player_states/run.gd" id="7_nciuy"]
-[ext_resource type="Texture2D" uid="uid://ciofr821b1kyr" path="res://art/player/sword/IronSword.png" id="8_30x47"]
+[ext_resource type="Texture2D" uid="uid://b1nf1xrukdxhx" path="res://art/weapons/Iron_sword.png" id="7_trk57"]
 [ext_resource type="Texture2D" uid="uid://bdbod53mr8pt5" path="res://art/GUI/health_bar/progress bar medium rounded progress tintable grey.png" id="8_33mqo"]
 [ext_resource type="Script" path="res://scripts/player_states/walk.gd" id="8_lpt6j"]
 [ext_resource type="Texture2D" uid="uid://2omb0bcn8tf7" path="res://art/GUI/health_bar/progress bar medium rounded over.png" id="9_p7xy7"]
@@ -537,7 +537,37 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_0f0xk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqm3y"]
+atlas = ExtResource("7_trk57")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3ciq"]
+atlas = ExtResource("7_trk57")
+region = Rect2(112, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpksw"]
+atlas = ExtResource("7_trk57")
+region = Rect2(224, 0, 112, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71o4c"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_aqm3y")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_r3ciq")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_gpksw")
+}],
+"loop": true,
+"name": &"swipe",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_26ho0"]
+points = PackedVector2Array(0, 0, 11, -16, 10, -17, 10, -21, 14, -21, 30, -37, 43, -26, 48, -9, 48, 2, 43, 14, 33, 24, 18, 29, 5, 29, -4, 26, -8, 22)
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
@@ -559,26 +589,27 @@ shape = SubResource("RectangleShape2D_w2yi0")
 sprite_frames = SubResource("SpriteFrames_l17t8")
 animation = &"back_idle"
 
-[node name="weapon" type="Sprite2D" parent="."]
+[node name="Weapon" type="AnimatedSprite2D" parent="."]
 visible = false
-texture = ExtResource("8_30x47")
-offset = Vector2(17.5, -17.5)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_71o4c")
+animation = &"swipe"
 
-[node name="WeaponArea2D" type="Area2D" parent="weapon" groups=["Weapon"]]
+[node name="WeaponArea2D" type="Area2D" parent="Weapon" groups=["Weapon"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon/WeaponArea2D"]
-rotation = -0.785398
-shape = SubResource("ConvexPolygonShape2D_0f0xk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/WeaponArea2D"]
+rotation = 0.00763035
+shape = SubResource("ConvexPolygonShape2D_26ho0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+z_index = 10
 offset_left = -186.0
 offset_top = -101.0
 offset_right = -154.0
 offset_bottom = -93.0
-scale = Vector2(3.52014, 3.52014)
 value = 10.0
 texture_under = ExtResource("8_33mqo")
 texture_over = ExtResource("9_p7xy7")
