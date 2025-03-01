@@ -13,7 +13,7 @@ func enter():
 			return run_state
 	else:
 		var mouse_pos = parent.get_global_mouse_position() - parent.global_position #mouse position relative to the player
-		parent.weapon_animation.rotation = atan2(mouse_pos.y, mouse_pos.x) #rotation degrees relative to mouse position
+		parent.weapon_animation.rotation = atan2(mouse_pos.y, mouse_pos.x) - parent.weapon_rotation_adjustment #rotation degrees relative to mouse position and adjustment
 		
 		parent.weapon_animation.play("swipe")
 		

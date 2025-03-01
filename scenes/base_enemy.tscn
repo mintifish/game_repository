@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b0dtuihybjlcv"]
+[gd_scene load_steps=44 format=3 uid="uid://b0dtuihybjlcv"]
 
 [ext_resource type="Script" path="res://scripts/base_enemy.gd" id="1_xg6lj"]
 [ext_resource type="Resource" uid="uid://c3yf7161nijxp" path="res://resources/enemy_resources/green_blob.tres" id="2_8qrsh"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/base_enemy_states/wander.gd" id="9_5n1mo"]
 [ext_resource type="Script" path="res://scripts/base_enemy_states/chase.gd" id="10_1kdg3"]
 [ext_resource type="Script" path="res://scripts/base_enemy_states/hurt.gd" id="15_vydh2"]
+[ext_resource type="Script" path="res://scripts/base_enemy_states/death.gd" id="16_5yvs0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f80"]
 size = Vector2(9, 6)
@@ -282,10 +283,15 @@ chase_state = NodePath("../chase")
 hurt_state = NodePath("../hurt")
 current_animation = "attack"
 
-[node name="hurt" type="Node" parent="state_machine" node_paths=PackedStringArray("chase_state")]
+[node name="hurt" type="Node" parent="state_machine" node_paths=PackedStringArray("chase_state", "death_state")]
 script = ExtResource("15_vydh2")
 chase_state = NodePath("../chase")
+death_state = NodePath("../death")
 current_animation = "hurt"
+
+[node name="death" type="Node" parent="state_machine"]
+script = ExtResource("16_5yvs0")
+current_animation = "death"
 
 [connection signal="body_entered" from="View_area" to="state_machine/idle" method="_on_view_area_body_entered"]
 [connection signal="body_entered" from="View_area" to="state_machine/wander" method="_on_view_area_body_entered"]

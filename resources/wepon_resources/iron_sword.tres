@@ -40,4 +40,5 @@ script = ExtResource("1_llhcp")
 sprite_frames = SubResource("SpriteFrames_71o4c")
 damage_strenght = 20.0
 knoknockback_strength = 100.0
+rotation_adjustment = 0.4
 collision_shape = SubResource("ConvexPolygonShape2D_v66jt")

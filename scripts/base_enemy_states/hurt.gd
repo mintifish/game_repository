@@ -1,6 +1,7 @@
 extends BaseEnemyState
 
 @export var chase_state: BaseEnemyState
+@export var death_state: BaseEnemyState
 
 var knockback_direction: Vector2
 
@@ -16,10 +17,14 @@ func enter():
 	knockback_direction = (Global.player_position - parent.position).normalized()
 	parent.velocity = -knockback_direction * Weapon.knockback_strength
 	
+	
 func process_physics(delta: float) -> BaseEnemyState:
 	parent.velocity = Vector2(
 		move_toward(parent.velocity.x, -knockback_direction.x * Weapon.knockback_strength, parent.acceleration * delta),
 		move_toward(parent.velocity.y, -knockback_direction.y * Weapon.knockback_strength, parent.acceleration * delta))
+		
+	if parent.current_hp <= 0:
+		return death_state
 		
 	if not parent.animated_sprite.is_playing():
 		return chase_state
@@ -28,8 +33,5 @@ func process_physics(delta: float) -> BaseEnemyState:
 	return null
 
 func update_health_bar():
-	if parent.current_hp <= 0:
-		print("death")
-	else:
-		if parent.health_bar.value != parent.current_hp:
-			parent.health_bar.value = parent.current_hp
+	if parent.health_bar.value != parent.current_hp:
+		parent.health_bar.value = parent.current_hp

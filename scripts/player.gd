@@ -15,6 +15,7 @@ var animation_direction: Vector2
 @export var weapon_stats: WeaponResource
 @onready var weapon_animation = $Weapon
 @onready var weapon_collision_shape = $Weapon/WeaponArea2D/CollisionShape2D
+var weapon_rotation_adjustment: float
 
 func _ready() -> void:
 	animations.play("front_idle")
@@ -23,6 +24,7 @@ func _ready() -> void:
 	Weapon.knockback_strength = weapon_stats.knoknockback_strength
 	weapon_animation.sprite_frames = weapon_stats.sprite_frames
 	weapon_collision_shape.shape = weapon_stats.collision_shape
+	weapon_rotation_adjustment = weapon_stats.rotation_adjustment
 	
 	Global.player_taken_damage.connect(_on_player_taken_damage)
 	state_machine.init(self)

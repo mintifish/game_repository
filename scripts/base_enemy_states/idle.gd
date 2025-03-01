@@ -8,8 +8,10 @@ extends BaseEnemyState
 func enter() -> void:
 	super()
 	parent.velocity = Vector2.ZERO
+
 	parent.animated_sprite.play(current_animation)
 	timer.start()
+
 	return_state = ""
 
 func process_physics(delta: float) -> BaseEnemyState:
