@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="EnemyResource" load_steps=49 format=3 uid="uid://c3yf7161nijxp"]
 
 [ext_resource type="Script" path="res://resources/enemy_resources/enemy_resource.gd" id="1_jo2mu"]
-[ext_resource type="Texture2D" uid="uid://b0mqxa8q1bs7j" path="res://art/enemys/Slime1/attackt.png" id="2_rkmh1"]
-[ext_resource type="Texture2D" uid="uid://bslmm207b0s2i" path="res://art/enemys/Slime1/idle.png" id="3_1y86w"]
-[ext_resource type="Texture2D" uid="uid://b5mjtk2l8c45c" path="res://art/enemys/Slime1/hurt.png" id="3_3vvqy"]
-[ext_resource type="Texture2D" uid="uid://dm1g7mpfnqm0r" path="res://art/enemys/Slime1/death.png" id="3_32uy4"]
-[ext_resource type="Texture2D" uid="uid://cyxs0cmo0kkif" path="res://art/enemys/Slime1/walk.png" id="4_qxliq"]
+[ext_resource type="Texture2D" uid="uid://b0mqxa8q1bs7j" path="res://art/enemys/green_blob/attackt.png" id="2_rkmh1"]
+[ext_resource type="Texture2D" uid="uid://bslmm207b0s2i" path="res://art/enemys/green_blob/idle.png" id="3_1y86w"]
+[ext_resource type="Texture2D" uid="uid://b5mjtk2l8c45c" path="res://art/enemys/green_blob/hurt.png" id="3_3vvqy"]
+[ext_resource type="Texture2D" uid="uid://dm1g7mpfnqm0r" path="res://art/enemys/green_blob/death.png" id="3_32uy4"]
+[ext_resource type="Texture2D" uid="uid://cyxs0cmo0kkif" path="res://art/enemys/green_blob/walk.png" id="4_qxliq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x1p1"]
 size = Vector2(13, 13)

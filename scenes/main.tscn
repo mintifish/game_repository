@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://enlgjks5pxns"]
+[gd_scene load_steps=17 format=4 uid="uid://enlgjks5pxns"]
 
 [ext_resource type="PackedScene" uid="uid://di4b3fet5cvsw" path="res://scenes/player.tscn" id="1_f0o3s"]
 [ext_resource type="PackedScene" uid="uid://b0dtuihybjlcv" path="res://scenes/base_enemy.tscn" id="2_ndrow"]
+[ext_resource type="Resource" uid="uid://wxkuaklkrp6l" path="res://resources/enemy_resources/blue_blob.tres" id="3_kf21j"]
+[ext_resource type="Resource" uid="uid://ekyij364bri6" path="res://resources/enemy_resources/lava_blob.tres" id="4_dimag"]
 [ext_resource type="Texture2D" uid="uid://bwpy5pxv1lmpx" path="res://art/Tileset/Water/water full tiles.png" id="5_4jqud"]
 [ext_resource type="Texture2D" uid="uid://dl1t8ns0om2dw" path="res://art/Tileset/Sand/Sand2.png" id="7_7fc8w"]
 [ext_resource type="Texture2D" uid="uid://d0es1c2h3f2ai" path="res://art/Tileset/Sand/Sand5.png" id="8_a51p2"]
@@ -200,11 +202,13 @@ position = Vector2(240, 135)
 [node name="green_blob" parent="Ysorting" instance=ExtResource("2_ndrow")]
 position = Vector2(161, 213)
 
-[node name="lava_blob" parent="Ysorting" instance=ExtResource("2_ndrow")]
-position = Vector2(161, 89)
-
 [node name="blue_blob" parent="Ysorting" instance=ExtResource("2_ndrow")]
 position = Vector2(162, 151)
+stats = ExtResource("3_kf21j")
+
+[node name="lava_blob" parent="Ysorting" instance=ExtResource("2_ndrow")]
+position = Vector2(161, 89)
+stats = ExtResource("4_dimag")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -2
