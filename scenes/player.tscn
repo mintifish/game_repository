@@ -630,6 +630,7 @@ idle_state = NodePath("../idle")
 walk_state = NodePath("../walk")
 attack_state = NodePath("../attack")
 current_animation = "front_run"
+speed = 130.0
 
 [node name="walk" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "run_state", "attack_state")]
 script = ExtResource("8_lpt6j")
@@ -637,7 +638,7 @@ idle_state = NodePath("../idle")
 run_state = NodePath("../run")
 attack_state = NodePath("../attack")
 current_animation = "front_walk"
-speed = 150.0
+speed = 80.0
 
 [node name="attack" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "run_state")]
 script = ExtResource("11_lqfur")

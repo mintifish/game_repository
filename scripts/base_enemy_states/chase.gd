@@ -18,7 +18,11 @@ func process_physics(delta: float) -> BaseEnemyState:
 		"hurt_state":
 			return hurt_state
 			
-	var direction = (Global.player_position - parent.position).normalized()
+	var direction = Vector2()
+	parent.nav_agent.target_position = Global.player_position
+	direction = (parent.nav_agent.get_next_path_position() - parent.position).normalized()
+	
+	
 	parent.velocity = Vector2(
 		move_toward(parent.velocity.x, direction.x * parent.speed, parent.acceleration * delta),
 		move_toward(parent.velocity.y, direction.y * parent.speed, parent.acceleration * delta))

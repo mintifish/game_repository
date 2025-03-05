@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  # Use AnimatedSprite2D
 @onready var health_bar: TextureProgressBar = $TextureProgressBar
 
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+
 @onready var main_collision: CollisionShape2D = $collision
 @onready var hitbox_collision: CollisionShape2D = $Hitbox/CollisionShape2D
 

@@ -18,7 +18,7 @@
 size = Vector2(9, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5d6h"]
-radius = 51.2445
+radius = 141.057
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x1p1"]
 size = Vector2(13, 13)
@@ -298,6 +298,14 @@ current_animation = "hurt"
 [node name="death" type="Node" parent="state_machine"]
 script = ExtResource("16_5yvs0")
 current_animation = "death"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 5.0
+debug_enabled = true
 
 [connection signal="body_entered" from="View_area" to="state_machine/idle" method="_on_view_area_body_entered"]
 [connection signal="body_entered" from="View_area" to="state_machine/wander" method="_on_view_area_body_entered"]

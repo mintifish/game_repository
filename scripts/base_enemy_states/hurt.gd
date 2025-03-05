@@ -6,6 +6,7 @@ extends BaseEnemyState
 var knockback_direction: Vector2
 
 func enter():
+	print("got hurt")
 	parent.velocity = Vector2.ZERO
 	
 	parent.animated_sprite.play(current_animation)

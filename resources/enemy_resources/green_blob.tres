@@ -316,7 +316,7 @@ animations = [{
 
 [resource]
 script = ExtResource("1_jo2mu")
-speed = 100.0
+speed = 70.0
 acceleration = 1000.0
 attack_damage = 20.0
 scale = Vector2(1, 1)
