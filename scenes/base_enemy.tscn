@@ -1,18 +1,18 @@
 [gd_scene load_steps=44 format=3 uid="uid://b0dtuihybjlcv"]
 
-[ext_resource type="Script" path="res://scripts/base_enemy.gd" id="1_xg6lj"]
+[ext_resource type="Script" path="res://scripts/enemy_scripts/base_enemy.gd" id="1_xg6lj"]
 [ext_resource type="Resource" uid="uid://c3yf7161nijxp" path="res://resources/enemy_resources/green_blob.tres" id="2_8qrsh"]
 [ext_resource type="Texture2D" uid="uid://cm6yctb4auov3" path="res://art/GUI/health_bars/enemy_hb/under.png" id="3_fh2wf"]
 [ext_resource type="Texture2D" uid="uid://edfe5uuv4deh" path="res://art/GUI/health_bars/enemy_hb/over.png" id="4_cjd3u"]
 [ext_resource type="Texture2D" uid="uid://d4iey4yp1fnuj" path="res://art/GUI/health_bars/enemy_hb/green.png" id="5_e6drn"]
 [ext_resource type="PackedScene" uid="uid://fbuophhiupub" path="res://base_enemy_state_machine/state_machine.tscn" id="6_6iibe"]
 [ext_resource type="Script" path="res://base_enemy_state_machine/state_machine.gd" id="7_ecft6"]
-[ext_resource type="Script" path="res://scripts/base_enemy_states/idle.gd" id="8_pkqig"]
-[ext_resource type="Script" path="res://scripts/base_enemy_states/attack.gd" id="9_2napc"]
-[ext_resource type="Script" path="res://scripts/base_enemy_states/wander.gd" id="9_5n1mo"]
-[ext_resource type="Script" path="res://scripts/base_enemy_states/chase.gd" id="10_1kdg3"]
-[ext_resource type="Script" path="res://scripts/base_enemy_states/hurt.gd" id="15_vydh2"]
-[ext_resource type="Script" path="res://scripts/base_enemy_states/death.gd" id="16_5yvs0"]
+[ext_resource type="Script" path="res://scripts/enemy_scripts/base_enemy_states/idle.gd" id="8_pkqig"]
+[ext_resource type="Script" path="res://scripts/enemy_scripts/base_enemy_states/attack.gd" id="9_2napc"]
+[ext_resource type="Script" path="res://scripts/enemy_scripts/base_enemy_states/wander.gd" id="9_5n1mo"]
+[ext_resource type="Script" path="res://scripts/enemy_scripts/base_enemy_states/chase.gd" id="10_1kdg3"]
+[ext_resource type="Script" path="res://scripts/enemy_scripts/base_enemy_states/hurt.gd" id="15_vydh2"]
+[ext_resource type="Script" path="res://scripts/enemy_scripts/base_enemy_states/death.gd" id="16_5yvs0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f80"]
 size = Vector2(9, 6)
@@ -214,6 +214,7 @@ animations = [{
 [node name="base_enemy" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(0, -2)
+wall_min_slide_angle = 1.74533
 script = ExtResource("1_xg6lj")
 stats = ExtResource("2_8qrsh")
 

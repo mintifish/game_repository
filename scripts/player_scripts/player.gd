@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+@onready var main_collision = $"."
+
 @onready var animations = $animations
 @onready var state_machine = $state_machine
 @onready var health_bar = $HealthBar

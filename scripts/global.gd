@@ -1,6 +1,7 @@
 extends Node
 
 signal player_taken_damage
+signal clear_enemys
 
 var player_position = Vector2.ZERO
 
